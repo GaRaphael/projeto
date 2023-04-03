@@ -2,12 +2,16 @@ import styles from './Project.module.css'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Container from '../layout/Container';
+import FormProjeto from '../project/FormProjeto';
+import Message from '../layout/Mensagem';
 
 function Project(){
 
     const{id} = useParams()
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
+    const [message, setMessage] = useState()
+    const [type, setType] = useState()
 
     useEffect(()=>{
         fetch(`http://localhost:5000/projects/${id}`,{
@@ -23,6 +27,31 @@ function Project(){
         .catch((err) => console.log(err))
     }, [id])
 
+    function editPost(project){
+        if(project.budget < project.cost){
+            setMessage('O orçamento não pode ser menor que o custo do projeto!')
+            setType('error')
+            return false
+        }
+
+
+        fetch(`http://localhost:5000/projects/${project.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(project),
+        })
+        .then(resp => resp.json())
+        .then(data =>{
+            setProject(data)
+            setShowProjectForm(false)
+            setMessage('Projeto atualizado!')
+            setType('sucess')
+        })
+        .catch(err => console.log(err))
+    }
+
     function toggleProjectForm(){
 
         setShowProjectForm(!showProjectForm)
@@ -32,27 +61,31 @@ function Project(){
         <>
           <div className={styles.project_details}>
               <Container customClass="column">
-                  <div  className={styles.details_container}>
-                      <h1>Projeto: {project.name}</h1>
-                      <button className={styles.btn} onClick={toggleProjectForm}>{!showProjectForm ? 'Editar projeto' : 'Fechar'}</button>
-                  </div>
-                  {!showProjectForm ? (
-                      <div className={styles.info}>
-                          <p>
-                              <span>Categoria: </span>{project?.category?.name}
-                          </p>
-                          <p>
-                              <span>Total de orçamento: </span>{project.budget}
-                          </p>
-                          <p>
-                              <span>Total ultilizado: </span>{project.cost}
-                          </p>
-                      </div>
-                  ):(
-                      <div className={styles.info}>
-                          <p>Detalhes</p>
-                      </div>
-                  )}
+                {message && <Message type={type} msg={message} />}
+                <div  className={styles.details_container}>
+                    <h1>Projeto: {project.name}</h1>
+                    <button className={styles.btn} onClick={toggleProjectForm}>{!showProjectForm ? 'Editar projeto' : 'Fechar'}</button>
+                </div>
+                {!showProjectForm ? (
+                    <div className={styles.info}>
+                        <p>
+                            <span>Categoria: </span>{project?.category?.name}
+                        </p>
+                        <p>
+                            <span>Total de orçamento: </span>{project.budget}
+                        </p>
+                        <p>
+                            <span>Total ultilizado: </span>{project.cost}
+                        </p>
+                    </div>
+                ):(
+                    <div className={styles.info}>
+                        <FormProjeto 
+                        handleSubmit={editPost} 
+                        ButtonText="Concluir edição" 
+                        projectData={project} />
+                    </div>
+                )}
               </Container>
           </div>
         </> 

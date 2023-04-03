@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './Mensagem.module.css'
 
 
-function Mensagem({msg,type}){
+function Message({msg,type}){
 
     const[visible, setVisible] = useState(false)
     
@@ -36,4 +36,4 @@ function Mensagem({msg,type}){
 
 
 
-export default Mensagem;
+export default Message;
