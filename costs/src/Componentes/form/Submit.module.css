@@ -1,0 +1,31 @@
+.button{
+    background-color: #222;
+    color: #fff;
+    padding: 0.7em 1.2em;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    border: none;
+}
+
+.button:hover{
+    color: #ffbb33;
+}
+
+
+.form_control{
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.form_control label{
+    margin-bottom: .6em;
+    font-weight: bold;
+}
+
+.form_control submit{
+    padding: .7em;
+    border-radius: 0;
+    border: none;
+}
