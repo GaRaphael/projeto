@@ -1,51 +1,15 @@
 {
   "projects": [
     {
-      "name": "teste",
+      "name": "a",
       "budget": "5000",
       "category": {
-        "id": "1",
-        "name": "Infraestrutura"
+        "id": "2",
+        "name": "Desenvolvimento"
       },
       "cost": 0,
       "services": [],
-      "id": 3
-    },
-    {
-      "name": "teste 2",
-      "budget": "1",
-      "category": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": null,
-      "services": [
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        },
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        },
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        },
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        },
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        },
-        {
-          "": "a",
-          "id": "42681b2f-e400-43cf-87f8-540be402250b"
-        }
-      ],
-      "id": 4
+      "id": 1
     }
   ],
   "categories": [

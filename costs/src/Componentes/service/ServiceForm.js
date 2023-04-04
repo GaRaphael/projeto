@@ -1,6 +1,6 @@
 import styles from '../project/Form.module.css'
 import { useState } from 'react';
-import Input from '../form/input';
+import Input from '../form/Input';
 import Submit from '../form/Submit';
 
 
@@ -24,7 +24,7 @@ function ServiceForm({handleSubmit, ButtonText, projectData}){
             <Input 
               type="text"
               text = "Nome do serviço"
-              nome = "name"
+              name = "name"
               placeholder="Insira o nome do serviço"
               handleOnChange={handleChange}
               //value={service.name ? service.name: ''}
@@ -32,14 +32,14 @@ function ServiceForm({handleSubmit, ButtonText, projectData}){
              <Input 
               type="number"
               text = "Custo do serviço"
-              nome = "cost"
+              name = "cost"
               placeholder="Insira o custo do serviço"
               handleOnChange={handleChange}
             />
              <Input 
               type="text"
               text = "Descrição do serviço"
-              nome = "description"
+              name = "description"
               placeholder="Descreva o serviço"
               handleOnChange={handleChange}
             />

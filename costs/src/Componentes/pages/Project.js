@@ -6,6 +6,7 @@ import Container from '../layout/Container';
 import FormProjeto from '../project/FormProjeto';
 import ServiceForm from '../service/ServiceForm';
 import Message from '../layout/Mensagem';
+import ServiceCard from '../service/ServiceCard';
 
 function Project(){
 
@@ -14,6 +15,7 @@ function Project(){
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState()
+    const[services,Setservices] = useState([])
     const [type, setType] = useState()
 
     useEffect(()=>{
@@ -26,6 +28,7 @@ function Project(){
         .then((resp) => resp.json())
         .then((data) =>{ 
             setProject(data)
+            Setservices(data.services)
         })
         .catch((err) => console.log(err))
     }, [id])
@@ -57,6 +60,7 @@ function Project(){
     }
     
     function createService(project){
+        setMessage('')
         const lastService = project.services[project.services.length -1]
         lastService.id = uuidv4()
         const lastServiceCost = lastService.cost
@@ -85,6 +89,8 @@ function Project(){
         .catch(err => console.log(err))
     } 
 
+    function removeService(){}
+
     function toggleProjectForm(){
 
         setShowProjectForm(!showProjectForm)
@@ -110,10 +116,10 @@ function Project(){
                             <span>Categoria: </span>{project?.category?.name}
                         </p>
                         <p>
-                            <span>Total de orçamento: </span>{project.budget}
+                            <span>Total de orçamento: R$</span>{project.budget}
                         </p>
                         <p>
-                            <span>Total ultilizado: </span>{project.cost}
+                            <span>Total ultilizado: R$</span>{project.cost}
                         </p>
                     </div>
                 ):(
@@ -144,7 +150,20 @@ function Project(){
                     </div>
                     <h2>Serviços</h2>
                     <Container customClass="start">
-                        <p>Itens de serviços</p>
+                        {services.length > 0 &&
+                            services.map((service)=>(
+                                <ServiceCard 
+                                    id={service.id}
+                                    name={service.name}
+                                    cost={service.cost}
+                                    description={service.description}
+                                    key={service.id}
+                                    handleRemove={removeService}
+                                />   
+                            ))
+                            
+                        }
+                        {services.length ===0 && <p>Não há serviços</p>}
                     </Container>
                 </Container>
             </div> 
