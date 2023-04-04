@@ -1,6 +1,5 @@
 import{BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Home from './Componentes/pages/Home';
-import Empresa from './Componentes/pages/Empresa';
 import Contato from './Componentes/pages/Contato';
 import Container from './Componentes/layout/Container';
 import Navbar from './Componentes/layout/NavBar';

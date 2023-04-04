@@ -16,6 +16,35 @@
     {
       "id": 4,
       "name": "Planejamento"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    }
+  ],
+  "coment_categories": [
+    {
+      "id": 1,
+      "name": "Crítica",
+      "coment": []
+    },
+    {
+      "id": 2,
+      "name": "Elogio",
+      "coment": []
+    },
+    {
+      "id": 3,
+      "name": "Sujestão",
+      "coment": []
     }
   ]
 }

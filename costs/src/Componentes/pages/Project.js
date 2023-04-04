@@ -1,4 +1,4 @@
-import {parse, v4 as uuidv4} from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import styles from './Project.module.css';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -185,8 +185,7 @@ function Project(){
                                     key={service.id}
                                     handleRemove={removeService}
                                 />   
-                            ))
-                            
+                            )) 
                         }
                         {services.length ===0 && <p>Não há serviços</p>}
                     </Container>
