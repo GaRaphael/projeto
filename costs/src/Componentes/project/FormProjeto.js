@@ -39,8 +39,7 @@ function FormProjeto({handleSubmit, ButtonText, projectData}){
             id: e.target.value,
             name: e.target.options[e.target.selectedIndex].text,
         },
-     })
-        
+     })     
     }
     
     return(

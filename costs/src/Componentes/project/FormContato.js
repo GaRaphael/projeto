@@ -9,6 +9,11 @@ function FormContato({handleSubmit, ButtonText, projectData}){
 
     const[coment_categories, setComent_categories] = useState([]);
 
+    function handleChange(e){
+        setComent_categories({...coment_categories, [e.target.name]: e.target.value})     
+    }
+
+
     useEffect(()=>{       
         fetch('http://localhost:5000/categories',{
             method: "POST",
@@ -31,7 +36,6 @@ function FormContato({handleSubmit, ButtonText, projectData}){
     
     return(
       <form onSubmit={submit} className={styles.form}>
-       
             <Input 
                 type="text" 
                 text="Digite seu nome"
@@ -53,8 +57,7 @@ function FormContato({handleSubmit, ButtonText, projectData}){
                 text= "Selecione o tipo de comentário"
                 options={coment_categories}
                 value={coment_categories.id ? coment_categories.id : ''}
-            />
-       
+            />     
         <Submit text={ButtonText}/> 
       </form>
     )
